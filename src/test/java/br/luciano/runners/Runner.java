@@ -7,9 +7,9 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-		features = "src/test/resources/features/aprender_cucumber.feature",
-		glue = {"br.luciano.steps","br.luciano.config"},
-		tags = "not @ignore",
+		features = "src/test/resources/features/alugar_filme.feature",
+		glue = {"br.luciano.steps"},
+		tags = {},
 		plugin = "pretty",
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,

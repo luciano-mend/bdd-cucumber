@@ -42,10 +42,10 @@ public class AprenderCucumberSteps {
 	
 	Date entrega = new Date();
 	
-	@Dado("que o prazo e dia {data}")
-	public void queAEntregaEDia(Date data) {
-		entrega = data;
-	}
+//	@Dado("que o prazo e dia {data}")
+//	public void queAEntregaEDia(Date data) {
+//		entrega = data;
+//	}
 	
 	@Quando("^a entrega atrasar em (\\d+) (dia|dias|mes|meses)$")
 	public void aEntregaAtrasarDias(Integer int1, String tempo) {
