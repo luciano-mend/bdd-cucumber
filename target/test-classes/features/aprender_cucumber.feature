@@ -19,7 +19,6 @@ Cenario: Deve incrementar contador
 	Quando eu incrementar em 35
 	Entao o valor do contador sera 158
 
-@esse
 Cenario: Deve calcular atraso na entrega
 	Dado que o prazo e dia 05/04/2022
 	Quando a entrega atrasar em 2 dias
@@ -45,6 +44,7 @@ Cenario: Deve reaproveitar os steps "Dado" do cenario anterior
     Dado que o nome do passageiro e "Cicrano de Oliveira"
     Dado que o telefone do passageiro e 9888-8888
 
+@ignore
 Cenario: Deve negar todos os steps "Dado" dos cenarios anteriores
     Dado que o ticket e CD123
     Dado que o ticket e AG1234

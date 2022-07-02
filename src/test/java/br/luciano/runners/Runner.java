@@ -9,7 +9,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 @CucumberOptions(
 		features = "src/test/resources/features/aprender_cucumber.feature",
 		glue = {"br.luciano.steps","br.luciano.config"},
-		tags = "@esse",
+		tags = "not @ignore",
 		plugin = "pretty",
 		monochrome = true,
 		snippets = SnippetType.CAMELCASE,
