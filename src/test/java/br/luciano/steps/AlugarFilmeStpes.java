@@ -17,8 +17,9 @@ public class AlugarFilmeStpes {
 	private Filme filme;
 	private AluguelService aluguel = new AluguelService();
 	private NotaAluguel notaAluguel;
+	private String erro;
 	
-	@Dado("um fillme com estoque de {int} unidades")
+	@Dado("um filme com estoque de {int} unidades")
 	public void umFillmeComEstoqueDeUnidades(Integer int1) {
 	    filme = new Filme();
 	    filme.setEstoque(int1);
@@ -31,7 +32,11 @@ public class AlugarFilmeStpes {
 
 	@Quando("alugar")
 	public void alugar() {
-	    notaAluguel = aluguel.alugar(filme);
+		try {
+			notaAluguel = aluguel.alugar(filme);
+		} catch (RuntimeException e) {
+			erro = e.getMessage();
+		}
 	}
 
 	@Então("o preço do aluguel será R$ {int}")
@@ -53,8 +58,13 @@ public class AlugarFilmeStpes {
 	    Assert.assertEquals(cal.get(Calendar.YEAR), calRetorno.get(Calendar.YEAR));
 	}
 
-	@Então("o estoque do filme terá {int} unidade")
+	@Então("o estoque do filme será {int} unidade")
 	public void oEstoqueDoFilmeTeráUnidade(Integer int1) {
 	    Assert.assertEquals(int1.intValue(), filme.getEstoque());
+	}
+	
+	@Então("não será possível por falta de estoque")
+	public void nãoSeráPossívelPorFaltaDeEstoque() {
+	    Assert.assertEquals("Filme sem estoque", erro);
 	}
 }
