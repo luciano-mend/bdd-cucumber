@@ -5,7 +5,10 @@ Funcionalidade: Alugar filme
 	Para controlar preços e datas de entrega
 
 Cenário: Deve alugar filme com sucesso
-	Dado um filme com estoque de 2 unidades
+	Dado um filme
+	| estoque | 2    |
+	| preco   | 3    |
+	| tipo    |comum |
 	E que o preço do aluguel seja R$ 3
 	Quando alugar
 	Então o preço do aluguel será R$ 3
@@ -18,7 +21,6 @@ Cenário: Não deve alugar filme sem estoque
 	Então não será possível por falta de estoque
 	E o estoque do filme será 0 unidade
 
-#Scenario Outline
 Esquema do Cenário: Deve dar condições conforme tipo de aluguel
 	Dado um filme com estoque de 2 unidades
 	E que o preço do aluguel seja R$ <preco>
@@ -28,7 +30,6 @@ Esquema do Cenário: Deve dar condições conforme tipo de aluguel
 	E a data de entrega será em <qtdDias> dias
 	E a pontuação recebida será de <pontuacao> pontos
 
-#Examples
 Exemplos:	
 	| preco | tipo     | valor | qtdDias | pontuacao |
 	| 4     | extendido| 8     | 3       | 2         |

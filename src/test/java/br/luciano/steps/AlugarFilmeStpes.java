@@ -3,6 +3,7 @@ package br.luciano.steps;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import org.junit.Assert;
 
@@ -11,6 +12,7 @@ import br.luciano.entidades.NotaAluguel;
 import br.luciano.entidades.TipoAluguel;
 import br.luciano.servicos.AluguelService;
 import br.luciano.utils.DateUtils;
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -21,7 +23,7 @@ public class AlugarFilmeStpes {
 	private AluguelService aluguel = new AluguelService();
 	private NotaAluguel notaAluguel;
 	private String erro;
-	private TipoAluguel tipoAluguel = TipoAluguel.COMUM;
+	private TipoAluguel tipoAluguel;
 	
 	@Dado("um filme com estoque de {int} unidades")
 	public void umFillmeComEstoqueDeUnidades(Integer int1) {
@@ -32,6 +34,16 @@ public class AlugarFilmeStpes {
 	@Dado("que o preço do aluguel seja R$ {int}")
 	public void queOPreçoDoAluguelSejaR$(Integer int1) {
 	    filme.setAluguel(int1);
+	}
+	
+	@Dado("um filme")
+	public void umFilme(DataTable dataTable) {
+		Map<String, String> map = dataTable.asMap(String.class, String.class);
+		filme = new Filme();
+	    filme.setEstoque(Integer.parseInt(map.get("estoque")));
+	    filme.setAluguel(Integer.parseInt(map.get("preco")));
+	    String tipo = map.get("tipo");
+	    tipoAluguel = tipo.equals("semanal") ? TipoAluguel.SEMANAL : tipo.equals("extendido") ? TipoAluguel.EXTENDIDO : TipoAluguel.COMUM;
 	}
 
 	@Quando("alugar")
