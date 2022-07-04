@@ -8,6 +8,7 @@ import org.junit.Assert;
 
 import br.luciano.entidades.Filme;
 import br.luciano.entidades.NotaAluguel;
+import br.luciano.entidades.TipoAluguel;
 import br.luciano.servicos.AluguelService;
 import br.luciano.utils.DateUtils;
 import io.cucumber.java.pt.Dado;
@@ -20,7 +21,7 @@ public class AlugarFilmeStpes {
 	private AluguelService aluguel = new AluguelService();
 	private NotaAluguel notaAluguel;
 	private String erro;
-	private String tipoAluguel;
+	private TipoAluguel tipoAluguel = TipoAluguel.COMUM;
 	
 	@Dado("um filme com estoque de {int} unidades")
 	public void umFillmeComEstoqueDeUnidades(Integer int1) {
@@ -59,7 +60,7 @@ public class AlugarFilmeStpes {
 	
 	@Dado("^que o tipo do aluguel seja (.*)$")
 	public void queOTipoDoAluguelSejaExtendido(String tipo) {
-	    tipoAluguel = tipo;
+	    tipoAluguel = tipo.equals("semanal") ? TipoAluguel.SEMANAL : tipo.equals("extendido") ? TipoAluguel.EXTENDIDO : TipoAluguel.COMUM;
 	}
 
 	@Então("a data de entrega será em {int} dia(s)")
