@@ -15,6 +15,6 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 		snippets = SnippetType.CAMELCASE,
 		dryRun = false,
 		strict = false)
-public class Runner {
+public class RunnerTest {
 
 }

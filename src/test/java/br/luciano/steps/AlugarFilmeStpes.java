@@ -43,7 +43,9 @@ public class AlugarFilmeStpes {
 	    filme.setEstoque(Integer.parseInt(map.get("estoque")));
 	    filme.setAluguel(Integer.parseInt(map.get("preco")));
 	    String tipo = map.get("tipo");
-	    tipoAluguel = tipo.equals("semanal") ? TipoAluguel.SEMANAL : tipo.equals("extendido") ? TipoAluguel.EXTENDIDO : TipoAluguel.COMUM;
+	    tipoAluguel = tipo.equals("semanal") ?
+	    		TipoAluguel.SEMANAL : tipo.equals("extendido") ?
+	    				TipoAluguel.EXTENDIDO : TipoAluguel.COMUM;
 	}
 
 	@Quando("alugar")
