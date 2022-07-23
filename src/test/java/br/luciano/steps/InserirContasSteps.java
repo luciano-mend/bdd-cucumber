@@ -22,7 +22,7 @@ public class InserirContasSteps {
 	
 	private WebDriver driver;
 	
-	@After(order = 1)
+	@After(order = 1, value = "@funcionais")
 	public void screenshot(Scenario cenario) {
 		File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		String caminho = "target" + File.separator + "screenshot" + File.separator + cenario.getName() + cenario.getLine() + ".jpg";
@@ -34,7 +34,7 @@ public class InserirContasSteps {
 		}
 	}
 	
-	@After(order = 0)
+	@After(order = 0, value = "@funcionais")
 	public void fechaNavegador() {
 		driver.quit();
 	}
