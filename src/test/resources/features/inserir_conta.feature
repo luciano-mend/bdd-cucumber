@@ -5,6 +5,7 @@ Funcionalidade: Cadastro de contas
 	Gostaria de cadastrar contas
 	Para que eu possa distribuir meu dinheiro de uma forma mais organizada
 
+@ignore
 Cenário: Deve inserir uma conta com sucesso
 	Dado que estou acessando a aplicação
 	Quando informo o usuário "lsm@email.com"
@@ -28,7 +29,6 @@ Cenário: Não deve inserir uma conta sem nome
 	E seleciono Salvar
 	Então sou notificado que o nome da conta é obrigatório
 	
-@ignore
 Cenário: Não deve inserir uma conta com nome já existente
 	Dado que estou acessando a aplicação
 	Quando informo o usuário "lsm@email.com"

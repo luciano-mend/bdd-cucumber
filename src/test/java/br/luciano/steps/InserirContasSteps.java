@@ -72,14 +72,18 @@ public class InserirContasSteps {
 	public void aContaÉInseridaComSucesso() {
 		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
 		Assert.assertEquals("Conta adicionada com sucesso!", texto);
-//		driver.quit();
 	}
 	
 	@Então("sou notificado que o nome da conta é obrigatório")
 	public void souNotificadoQueONomeDaContaÉObrigatório() {
 		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
 		Assert.assertEquals("Informe o nome da conta", texto);
-//		driver.quit();
+	}
+	
+	@Então("sou notificado que já existe uma conta com esse nome")
+	public void souNotificadoQueJáExisteUmaContaComEsseNome() {
+		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+		Assert.assertEquals("Já existe uma conta com esse nome!", texto);
 	}
 	
 }
