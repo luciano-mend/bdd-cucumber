@@ -68,22 +68,28 @@ public class InserirContasSteps {
 		driver.findElement(By.tagName("button")).click();
 	}
 
-	@Então("a conta é inserida com sucesso")
-	public void aContaÉInseridaComSucesso() {
-		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
-		Assert.assertEquals("Conta adicionada com sucesso!", texto);
-	}
+//	@Então("a conta é inserida com sucesso")
+//	public void aContaÉInseridaComSucesso() {
+//		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+//		Assert.assertEquals("Conta adicionada com sucesso!", texto);
+//	}
+//	
+//	@Então("sou notificado que o nome da conta é obrigatório")
+//	public void souNotificadoQueONomeDaContaÉObrigatório() {
+//		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+//		Assert.assertEquals("Informe o nome da conta", texto);
+//	}
+//	
+//	@Então("sou notificado que já existe uma conta com esse nome")
+//	public void souNotificadoQueJáExisteUmaContaComEsseNome() {
+//		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+//		Assert.assertEquals("Já existe uma conta com esse nome!", texto);
+//	}
 	
-	@Então("sou notificado que o nome da conta é obrigatório")
-	public void souNotificadoQueONomeDaContaÉObrigatório() {
+	@Então("recebo a mensagem {string}")
+	public void receboAMensagem(String string) {
 		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
-		Assert.assertEquals("Informe o nome da conta", texto);
-	}
-	
-	@Então("sou notificado que já existe uma conta com esse nome")
-	public void souNotificadoQueJáExisteUmaContaComEsseNome() {
-		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
-		Assert.assertEquals("Já existe uma conta com esse nome!", texto);
+		Assert.assertEquals(string, texto);
 	}
 	
 }
