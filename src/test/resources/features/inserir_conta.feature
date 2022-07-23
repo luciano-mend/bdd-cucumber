@@ -17,7 +17,6 @@ Cenário: Deve inserir uma conta com sucesso
 	E seleciono Salvar
 	Então a conta é inserida com sucesso
 
-@ignore	
 Cenário: Não deve inserir uma conta sem nome
 	Dado que estou acessando a aplicação
 	Quando informo o usuário "lsm@email.com"

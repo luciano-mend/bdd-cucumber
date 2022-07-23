@@ -6,6 +6,7 @@ import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Então;
 import io.cucumber.java.pt.Quando;
@@ -13,11 +14,16 @@ import io.cucumber.java.pt.Quando;
 public class InserirContasSteps {
 	
 	private WebDriver driver;
+	
+	@After
+	public void fechaNavegador() {
+		driver.quit();
+	}
 
 	@Dado("que estou acessando a aplicação")
 	public void queEstouAcessandoAAplicação() {
 	    driver = new ChromeDriver();
-	    driver.manage().window().setSize(new Dimension(1280, 760));
+	    driver.manage().window().setSize(new Dimension(1360, 760));
 	    driver.get("https://seubarriga.wcaquino.me");
 	}
 
@@ -66,7 +72,14 @@ public class InserirContasSteps {
 	public void aContaÉInseridaComSucesso() {
 		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
 		Assert.assertEquals("Conta adicionada com sucesso!", texto);
-		driver.quit();
+//		driver.quit();
+	}
+	
+	@Então("sou notificado que o nome da conta é obrigatório")
+	public void souNotificadoQueONomeDaContaÉObrigatório() {
+		String texto = driver.findElement(By.xpath("//div[@role='alert']")).getText();
+		Assert.assertEquals("Informe o nome da conta", texto);
+//		driver.quit();
 	}
 	
 }
