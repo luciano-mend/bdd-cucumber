@@ -24,5 +24,3 @@ Exemplos:
  | Conta de Teste   | Conta adicionada com sucesso!      |
  |                  | Informe o nome da conta            |
  | Conta mesmo nome | Já existe uma conta com esse nome! |
-
-
