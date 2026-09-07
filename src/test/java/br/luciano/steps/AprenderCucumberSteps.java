@@ -1,10 +1,11 @@
 package br.luciano.steps;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.Entao;
@@ -36,16 +37,16 @@ public class AprenderCucumberSteps {
 	}
 	@Entao("o valor do contador sera {int}")
 	public void oValorDoContadorSera(Integer int1) {
-		Assert.assertEquals(int1, contador);
+		Assertions.assertEquals(int1, contador);
 	}
 
 	
 	Date entrega = new Date();
 	
-//	@Dado("que o prazo e dia {data}")
-//	public void queAEntregaEDia(Date data) {
-//		entrega = data;
-//	}
+	@Dado("que o prazo e dia {data}")
+	public void queAEntregaEDia(Date data) {
+		entrega = data;
+	}
 	
 	@Quando("^a entrega atrasar em (\\d+) (dia|dias|mes|meses)$")
 	public void aEntregaAtrasarDias(Integer int1, String tempo) {
@@ -64,7 +65,7 @@ public class AprenderCucumberSteps {
 	public void aEntregaSeraEfetuadaEm(String data) {
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		String dataFormatada = format.format(entrega);
-		Assert.assertEquals(data, dataFormatada);
+		Assertions.assertEquals(data, dataFormatada);
 	}
 
 
@@ -72,7 +73,7 @@ public class AprenderCucumberSteps {
 	public void queOTicketE(String especial, String ticket) {
 	}
 	
-	@Dado("que o valor da passagem e R$ {double}") //(\d+),(\d+)
+	@Dado("que o valor da passagem e R$ {double}")
 	public void queOValorDaPassagemER$(Double double1) {
 	}
 	
@@ -91,9 +92,5 @@ public class AprenderCucumberSteps {
 	@Entao("o teste vai funcionar")
 	public void oTesteVaiFuncionar() {
 	}
-
-
-
-
 
 }

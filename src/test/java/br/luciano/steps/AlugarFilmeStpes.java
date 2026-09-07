@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import br.luciano.entidades.Filme;
 import br.luciano.entidades.NotaAluguel;
@@ -59,17 +59,17 @@ public class AlugarFilmeStpes {
 
 	@Então("o preço do aluguel será R$ {int}")
 	public void oPreçoDoAluguelSeráR$(Integer int1) {
-	    Assert.assertEquals(int1.intValue(), notaAluguel.getPreco());
+	    Assertions.assertEquals(int1.intValue(), notaAluguel.getPreco());
 	}
 
 	@Então("o estoque do filme será {int} unidade")
 	public void oEstoqueDoFilmeTeráUnidade(Integer int1) {
-	    Assert.assertEquals(int1.intValue(), filme.getEstoque());
+	    Assertions.assertEquals(int1.intValue(), filme.getEstoque());
 	}
 	
 	@Então("não será possível por falta de estoque")
 	public void nãoSeráPossívelPorFaltaDeEstoque() {
-	    Assert.assertEquals("Filme sem estoque", erro);
+	    Assertions.assertEquals("Filme sem estoque", erro);
 	}
 	
 	@Dado("^que o tipo do aluguel seja (.*)$")
@@ -84,12 +84,12 @@ public class AlugarFilmeStpes {
 	    
 	    DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 	    
-	    Assert.assertEquals(format.format(dataExperada), format.format(dataReal));
+	    Assertions.assertEquals(format.format(dataExperada), format.format(dataReal));
 	}
 
 	@Então("a pontuação recebida será de {int} pontos")
 	public void aPontuaçãoRecebidaSeráDePontos(Integer int1) {
-	    Assert.assertEquals(int1.intValue(), notaAluguel.getPontuacao());
+	    Assertions.assertEquals(int1.intValue(), notaAluguel.getPontuacao());
 	}
 	
 }
